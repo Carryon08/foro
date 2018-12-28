@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class CreatePostController extends Controller
 {
@@ -16,9 +17,9 @@ class CreatePostController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
-            'content' => 'required'
+            'content' => 'required',
         ]);
-        $post= new Post($request->all());
+        $post = new Post($request->all());
 
         auth()->user()->posts()->save($post);
 
